@@ -1,14 +1,15 @@
 import React from "react"
 import Wrapper from "../assets/wrappers/LandingPage"
-import logo from "../assets/images/logo.svg"
-import main from "../assets/images/main.svg"
+import { Logo } from "../components"
+import main from "../assets/images/team_up.svg"
 
 const Landing = () => {
   return (
     <Wrapper>
       <nav>
-        <img src={logo} alt="jobster logo" className="logo" />
+        <Logo />
       </nav>
+
       <div className="container page">
         {/* info */}
         <div className="info">
