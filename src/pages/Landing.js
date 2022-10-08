@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import Wrapper from "../assets/wrappers/LandingPage"
 import { Logo } from "../components"
 import main from "../assets/images/team_up.svg"
@@ -22,7 +23,7 @@ const Landing = () => {
             power match on truth worse voice would. Large an it sense shall an
             match learn.
           </p>
-          <button className="btn btn-hero">Login/Register</button>
+          <Link to='/register' className="btn btn-hero">Login/Register</Link>
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
       </div>
