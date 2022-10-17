@@ -18,3 +18,4 @@ const FormRow = ({ handleChange, name, value, type, labelText }) => {
 }
 
 export default FormRow
+

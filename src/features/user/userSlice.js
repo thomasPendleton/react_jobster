@@ -9,22 +9,19 @@ const initialState = {
 export const registerUser = createAsyncThunk(
   "user/registerUser",
   async (user, thunkAPI) => {
-    console.log(`register user: ${user}`)
+    console.log(`register user: ${JSON.stringify(user)}`)
   }
 )
 export const loginUser = createAsyncThunk(
   "user/loginUser",
   async (user, thunkAPI) => {
-    console.log(`login user: ${user}`)
+    console.log(`login user: ${JSON.stringify(user)}`)
   }
 )
 
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducer:{
-    registerUser,
-  }
 })
 
 export default userSlice.reducer
