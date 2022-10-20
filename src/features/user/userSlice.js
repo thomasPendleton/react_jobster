@@ -11,13 +11,12 @@ export const registerUser = createAsyncThunk(
   "user/registerUser",
   async (user, thunkAPI) => {
     try {
-      const response = await customFetch.post("/auth/testingRegister", user)
-      console.log( response );
+      const response = await customFetch.post("/auth/register", user )
+      return response.data
     } catch (error) {
-      console.log(error)
+        return thunkAPI.rejectWithValue(error.response.data.msg)
     }
 
-    // console.log(`register user: ${JSON.stringify(user)}`)
   }
 )
 export const loginUser = createAsyncThunk(
