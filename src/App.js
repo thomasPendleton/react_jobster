@@ -13,7 +13,14 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="*" element={<Error />} />
         </Routes>
-        <ToastContainer />
+        <ToastContainer
+          position="top-center"
+          autoClose="5000"
+          hideProgressBar="false"
+          closeOnClick="true"
+          pauseOnHover="true"
+          theme="light"
+        />
       </Router>
     </div>
   )
