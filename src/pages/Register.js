@@ -71,7 +71,7 @@ function Register() {
           handleChange={handleChange}
         />
 
-        <button disabled={isLoading} className="btn btn-block">Submit</button>
+        <button disabled={isLoading} className="btn btn-block">{isLoading ? 'loading...' : 'Submit'}</button>
         <p>
           {values.isMember ? "Not a member yet?" : "Already a member?"}
 
