@@ -5,11 +5,16 @@ import { NavLink } from "react-router-dom"
 import { toggleSidebar } from "../features/user/userSlice"
 import Logo from "./Logos"
 import { useDispatch, useSelector } from "react-redux"
+import NavLinks from "./NavLinks"
+import links from "../utils/links"
+ 
 
 const SmallSidebar = () => {
   const { isSidebarOpen } = useSelector((store) => store.user)
   const dispatch = useDispatch()
-
+  const toggle = () => {
+    dispatch(toggleSidebar());
+  };
   return (
     <Wrapper>
       <div
@@ -26,8 +31,8 @@ const SmallSidebar = () => {
           </button>
           <header>
             <Logo />
-            <div className="nav-links">nav links</div>
           </header>
+          <NavLinks toggleSidebar={toggle} /> 
         </div>
       </div>
     </Wrapper>
