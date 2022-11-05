@@ -43,16 +43,16 @@ const allJobsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getAllJobs.pending]: (state, action) => {
-        state.isLoading = true
-
+      state.isLoading = true
     },
-    [getAllJobs.fulfilled]: (state, action) => {
+    [getAllJobs.fulfilled]: (state, { payload: { jobs } }) => {
       state.isLoading = false
-      console.log(action.payload.jobs)
-      state.jobs = action.payload.jobs
+      console.log(jobs)
+      state.jobs = jobs
     },
-    [getAllJobs.rejected]: (state, action) => {
+    [getAllJobs.rejected]: (state, { payload }) => {
       state.isLoading = false
+      toast.error(payload)
     },
   },
 })

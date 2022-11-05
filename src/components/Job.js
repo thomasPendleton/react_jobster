@@ -1,8 +1,26 @@
-import React from "react"
+import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa"
+import { Link } from "react-router-dom"
+import Wrapper from "../assets/wrappers/Job"
+import { useDispatch } from "react-redux"
 
-const Job = ({ company, position, status, jobType, jobLocation }) => {
-  console.log(company, position, status)
-  return <div>Job</div>
+const Job = ({
+  _id,
+  company,
+  position,
+  status,
+  jobType,
+  jobLocation,
+  createdAt,
+}) => {
+  const dispatch = useDispatch()
+
+
+
+  return <Wrapper>{company}</Wrapper>
+
+
+
+  
 }
 
 export default Job

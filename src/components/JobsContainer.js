@@ -13,8 +13,6 @@ const JobsContainer = () => {
 
   useEffect(() => {
     dispatch(getAllJobs())
-  
-    
   }, [])
   
 
