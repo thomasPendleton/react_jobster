@@ -16,7 +16,11 @@ const Job = ({
 
 
 
-  return <Wrapper>{company}</Wrapper>
+  return <Wrapper>
+    <header>
+      <div className="main-icon">{company.charAt(0)}</div>
+    </header>
+  </Wrapper>
 
 
 
