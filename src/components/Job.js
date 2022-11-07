@@ -16,26 +16,41 @@ const Job = ({
 
 
 
-  return <Wrapper>
-    <header>
-      <div className="main-icon">{company.charAt(0)}</div>
-      <div className="info">
-        <h5>{position}</h5>
-        <p>{company}</p>
-      </div>
-    </header>
-    <div className="content">
-      <div className="content-center">
-        <h4>more content</h4>
-        <div className={`status ${status}`}>{status}</div>
-      </div>
-      <footer>
-        <div className="actions">
-          <Link to='/add-job' className="btn edit-btn" onClick={() => console.log('edit btn')}>Edit</Link>
+  return (
+    <Wrapper>
+      <header>
+        <div className="main-icon">{company.charAt(0)}</div>
+        <div className="info">
+          <h5>{position}</h5>
+          <p>{company}</p>
         </div>
-      </footer>
-    </div>
-  </Wrapper>
+      </header>
+      <div className="content">
+        <div className="content-center">
+          <h4>more content</h4>
+          <div className={`status ${status}`}>{status}</div>
+        </div>
+        <footer>
+          <div className="actions">
+            <Link
+              to="/add-job"
+              className="btn edit-btn"
+              onClick={() => console.log("edit btn")}
+            >
+              Edit
+            </Link>
+            <button
+              type="button"
+              onClick={() => console.log("delete Job")}
+              className="btn delete-btn"
+            >
+              Delete
+            </button>
+          </div>
+        </footer>
+      </div>
+    </Wrapper>
+  )
 
 
 
