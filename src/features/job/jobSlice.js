@@ -47,7 +47,6 @@ const jobSlice = createSlice({
   initialState,
   reducers: {
     handleChange: (state, { payload: { name, value } }) => {
-      console.log(name, value)
       state[name] = value
     },
     clearValues: () => {
