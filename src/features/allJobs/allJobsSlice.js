@@ -63,6 +63,6 @@ const allJobsSlice = createSlice({
   },
 })
 
-export const { showLoading, hideLoading } = allJobsSlice.reducer
+export const { showLoading, hideLoading } = allJobsSlice.actions
 
 export default allJobsSlice.reducer
