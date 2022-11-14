@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { toast } from "react-toastify"
-import customFetch from "../../utils/axios"
 import { getUserFromLocalStorage } from "../../utils/localstorage"
 import { logoutUser, updateUser } from "../user/userSlice"
-import { showLoading, hideLoading, getAllJobs } from "../allJobs/allJobsSlice"
 import { createJobThunk, deleteJobThunk, editJobThunk } from "./jobThunk"
 
 const initialState = {
@@ -19,21 +17,11 @@ const initialState = {
   editJobId: "",
 }
 
-export const createJob = createAsyncThunk("job/createJob", (job, thunkAPI) => {
-  return createJobThunk("/jobs/", job, thunkAPI)
-})
+export const createJob = createAsyncThunk("job/createJob", createJobThunk)
 
-export const editJob = createAsyncThunk("job/editJob", (job, thunkAPI) => {
-  return editJobThunk(job, thunkAPI)
-})
+export const editJob = createAsyncThunk("job/editJob", editJobThunk)
 
-export const deleteJob = createAsyncThunk(
-  "job/deleteJob",
-  (jobId, thunkAPI) => {
-    thunkAPI.dispatch(showLoading())
-    return deleteJobThunk("/jobs/", jobId, thunkAPI)
-  }
-)
+export const deleteJob = createAsyncThunk("job/deleteJob", deleteJobThunk)
 
 const jobSlice = createSlice({
   name: "job",

@@ -3,9 +3,9 @@ import { showLoading, hideLoading, getAllJobs } from "../allJobs/allJobsSlice"
 import { logoutUser } from "../user/userSlice"
 import { clearValues } from "./jobSlice"
 
-export const createJobThunk = async (url, job, thunkAPI) => {
+export const createJobThunk = async (job, thunkAPI) => {
   try {
-    const response = await customFetch.post(url, job, {
+    const response = await customFetch.post("/jobs/", job, {
       headers: {
         authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
       },
@@ -38,11 +38,11 @@ export const editJobThunk = async ({ jobId, job }, thunkAPI) => {
   }
 }
 
-export const deleteJobThunk = async (url, jobId, thunkAPI) => {
+export const deleteJobThunk = async ( jobId, thunkAPI) => {
   thunkAPI.dispatch(showLoading())
 
   try {
-    const response = await customFetch.delete(`${url}${jobId}`, {
+    const response = await customFetch.delete(`/jobs/${jobId}`, {
       header: {
         authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
       },
