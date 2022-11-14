@@ -43,7 +43,7 @@ export const deleteJobThunk = async ( jobId, thunkAPI) => {
 
   try {
     const response = await customFetch.delete(`/jobs/${jobId}`, {
-      header: {
+      headers: {
         authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
       },
     })
