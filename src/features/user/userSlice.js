@@ -70,7 +70,6 @@ const userSlice = createSlice({
       state.isLoading = true
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      console.log(payload)
       const { user } = payload
       state.isLoading = false
       state.user = user

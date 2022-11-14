@@ -24,11 +24,7 @@ export const getAllJobs = createAsyncThunk(
   "allJobs/getJobs",
   async (_, thunkAPI) => {
     try {
-      const response = await customFetch.get("/jobs", {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      })
+      const response = await customFetch.get("/jobs")
       return response.data
     } catch (error) {
       console.log(error)
