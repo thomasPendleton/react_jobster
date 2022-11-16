@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleSidebar, logoutUser } from "../features/user/userSlice"
+import { toggleSidebar, clearStore } from "../features/user/userSlice"
 import Wrapper from "../assets/wrappers/Navbar"
 import { FaHome, FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa"
 import Logo from "./Logos"
@@ -37,7 +37,7 @@ const Navbar = () => {
             <button
               className="dropdown-btn"
               type="button"
-              onClick={() => dispatch(logoutUser('Logging out...'))}
+              onClick={() => dispatch(clearStore("Logout Successful..."))}
             >
               Logout
             </button>
