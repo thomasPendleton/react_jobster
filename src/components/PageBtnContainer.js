@@ -13,32 +13,41 @@ const PageBtnContainer = () => {
   })
 
   const nextPage = () => {
-    dispatch(changePage(page + 1))
+    let newPage = page + 1
+    if (newPage > numOfPages) {
+      newPage = 1
+    }
+    dispatch(changePage(newPage))
   }
   const prevPage = () => {
-    if(page <= 1) return
-    dispatch(changePage(page - 1))
+    let newPage = page - 1
+    if (newPage < 1) {
+      newPage = numOfPages
+    }
+    dispatch(changePage(newPage))
   }
 
-  console.log(page)
   return (
     <Wrapper>
       <button className="prev-btn" onClick={prevPage}>
         <HiChevronDoubleLeft />
         prev
       </button>
-      {pages.map((pageNumber) => {
+      <div className="btn-container">
+        {pages.map((pageNumber) => {
         return (
           <button
             key={pageNumber}
             type="button"
             className={pageNumber === page ? "pageBtn active" : "pageBtn"}
-            onClick={() => console.log("change page ", pageNumber)}
+            onClick={() => dispatch(changePage(pageNumber))}
           >
             {pageNumber}
           </button>
         )
       })}
+      </div>
+      
       <button className="next-btn" onClick={nextPage}>
         Next
         <HiChevronDoubleRight />
