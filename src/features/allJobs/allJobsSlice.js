@@ -50,40 +50,52 @@ const allJobsSlice = createSlice({
   name: "allJobs/",
   initialState,
   reducers: {
+    handleChange: (state, { payload: { name, value } }) => {
+      state[name] = value
+    },
+    clearFilters: (state, payload) => {
+      return {...state, ...initialFiltersState}
+    },
     showLoading: (state) => {
       state.isLoading = true
     },
     hideLoading: (state) => {
       state.isLoading = false
     },
+    changePage: (state, {payload}) => {
+      console.log(payload);
+      state.page = payload
+    }
   },
   extraReducers: {
     [getAllJobs.pending]: (state, action) => {
       state.isLoading = true
     },
-    [getAllJobs.fulfilled]: (state, { payload: { jobs } }) => {
+    [getAllJobs.fulfilled]: (state, { payload}) => {
       state.isLoading = false
-      state.jobs = jobs
+      state.jobs = payload.jobs
+      state.numOfPages = payload.numOfPages
+      state.totalJobs = payload.totalJobs
     },
     [getAllJobs.rejected]: (state, { payload }) => {
       state.isLoading = false
       toast.error(payload)
     },
-    [showStats.pending] : (state, action) => {
+    [showStats.pending]: (state, action) => {
       state.isLoading = true
     },
-    [showStats.fulfilled] : (state, {payload}) => {
+    [showStats.fulfilled]: (state, { payload }) => {
       state.isLoading = false
       state.stats = payload.defaultStats
       state.monthlyApplications = payload.monthlyApplications
     },
-    [showStats.rejected] : (state, {payload}) => {
+    [showStats.rejected]: (state, { payload }) => {
       state.isLoading = false
       toast.error(payload)
     },
   },
 })
 
-export const { showLoading, hideLoading } = allJobsSlice.actions
+export const { showLoading, hideLoading, handleChange, clearFilters, changePage } = allJobsSlice.actions
 
 export default allJobsSlice.reducer

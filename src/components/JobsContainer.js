@@ -4,22 +4,22 @@ import Wrapper from "../assets/wrappers/JobsContainer"
 import { useSelector, useDispatch } from "react-redux"
 import Loading from './Loading';
 import { getAllJobs } from "../features/allJobs/allJobsSlice";
-
-
+import PageBtnContainer from "./PageBtnContainer"
 
 const JobsContainer = () => {
-  const { jobs, isLoading } = useSelector((store) => store.allJobs)
+  const { jobs, isLoading, totalJobs, numOfPages } = useSelector(
+    (store) => store.allJobs
+  )
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getAllJobs())
   }, [])
-  
 
   if (isLoading) {
     return (
       <Wrapper>
-        <Loading center/>
+        <Loading center />
       </Wrapper>
     )
   }
@@ -33,12 +33,16 @@ const JobsContainer = () => {
 
   return (
     <Wrapper>
-        <h5>Jobs info</h5>
-        <div className="jobs">
-            {jobs.map(item => {
-                return <Job key={item._id} {...item} />
-            })}
-        </div>
+      <h5>
+        {" "}
+        {totalJobs} job{jobs.length > 1 ? "s" : null} found
+      </h5>
+      <div className="jobs">
+        {jobs.map((item) => {
+          return <Job key={item._id} {...item} />
+        })}
+      </div>
+      {numOfPages > 1 ? <PageBtnContainer /> : null}
     </Wrapper>
   )
 }
