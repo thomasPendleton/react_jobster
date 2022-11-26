@@ -40,35 +40,36 @@ const jobSlice = createSlice({
       return { ...state, isEditing: true, ...payload }
     },
   },
-  extraReducers: {
-    [createJob.pending]: (state) => {
-      state.isLoading = true
-    },
-    [createJob.fulfilled]: (state, action) => {
-      state.isLoading = false
-      toast.success("Job Created")
-    },
-    [createJob.rejected]: (state, { payload }) => {
-      state.isLoading = false
-      toast.error(payload)
-    },
-    [deleteJob.fulfilled]: (state, action) => {
-      toast.success(action.payload)
-    },
-    [deleteJob.rejected]: (state, { payload }) => {
-      toast.error(payload)
-    },
-    [editJob.pending]: (state, action) => {
-      state.isLoading = true
-    },
-    [editJob.fulfilled]: (state, { payload }) => {
-      state.isLoading = false
-      toast.success("Job changed...")
-    },
-    [editJob.rejected]: (state, { payload }) => {
-      state.isLoading = false
-      toast.error(payload)
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createJob.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(createJob.fulfilled, (state, action) => {
+        state.isLoading = false
+        toast.success("Job Created")
+      })
+      .addCase(createJob.rejected, (state, { payload }) => {
+        state.isLoading = false
+        toast.error(payload)
+      })
+      .addCase(deleteJob.fulfilled, (state, action) => {
+        toast.success(action.payload)
+      })
+      .addCase(deleteJob.rejected, (state, { payload }) => {
+        toast.error(payload)
+      })
+      .addCase(editJob.pending, (state, action) => {
+        state.isLoading = true
+      })
+      .addCase(editJob.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        toast.success("Job changed...")
+      })
+      .addCase(editJob.rejected, (state, { payload }) => {
+        state.isLoading = false
+        toast.error(payload)
+      })
   },
 })
 
