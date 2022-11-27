@@ -30,6 +30,7 @@ const allJobsSlice = createSlice({
     handleChange: (state, { payload: { name, value } }) => {
       state.page = 1
       state[name] = value
+      console.log(state.name, state.value);
     },
     clearFilters: (state, payload) => {
       return { ...state, ...initialFiltersState }
